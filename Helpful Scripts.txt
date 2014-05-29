@@ -1,0 +1,22 @@
+That particular usage of .on() only binds event handlers to elements that existed when the code was run, 
+and won't affect elements that are added dynamically after that code has been executed. 
+Instead you'll need to use the event delegation syntax for .on(), something like this:
+
+$(document).on('mouseover', 'ul.ourHolder li', function(){
+    $(this).children('div.full').stop().fadeTo('slow',0.5);     
+}) 
+
+Ideally you'd replace document with a selector for a more specific, but not dynamically added, 
+element that contains all of the elements you want to execute the callback 
+function for when they trigger the mouseover event.
+
+
+data: JSON.stringify({ 'name': name, 'Gender': gender }),
+
+
+Try [short circuit boolean evaluation][1]: `sum += +this.value || 0;`
+
+The `+` tries to box the value to a `Number`, if that fails use value `0`
+
+
+  [1]: http://en.wikipedia.org/wiki/Short-circuit_evaluation
